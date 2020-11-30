@@ -1,0 +1,61 @@
+---
+title: "Everything is wrong"
+author: "Allison Horst"
+date: "11/30/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(TIDYVERSE)
+library(here)
+library(palmerpenguins)
+```
+
+# Introdction
+
+Here's a bunch of messed up code...
+
+## Create a subset
+
+Make a subset `penguin2` that contains only Adelie penguins, and with a new column that has body mass converted to kilograms (from grams). 
+
+```{r}
+penguin2 < penguins %>% 
+  filter(species = "Adelie") + # Only keep Adelie penguins
+  mutate(body_mass_kg = body_mass_g *1000) # Convert mass to kilograms
+```
+
+## Make a graph
+
+```{r}
+ggplot2(data = Penguins2, aes(x = flipper_length_mm,
+                             y = body_mass_kg)) %>% 
+  geom_point(color = "blue") %>% 
+  theme_Minimal()
+```
+
+## Now make a summary table for Adelies
+
+```{r}
+my_table <-- penguins2 +
+  group_by(island) %>% 
+  summarize(
+    mean_flipper = mean(flipper_length_mm, narm = TRUE),
+    sd_flipper = sd(flipper_length_mm, narm = TRUE),
+    sample_size = N()
+  )
+```
+
+```{r
+
+# Make a jitterplot of bill_depth_mm by species
+ggplot(data = penguins, aes(x = species, y = bill_depth_mm)) +
+geom_jitter() +
+Labs(x = "species", y = "Bill depth (mm)") +
+theme_bw()
+
+```
+
+
+
